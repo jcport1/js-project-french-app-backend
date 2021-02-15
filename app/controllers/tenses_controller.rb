@@ -1,0 +1,2 @@
+class TensesController < ApplicationController
+end
