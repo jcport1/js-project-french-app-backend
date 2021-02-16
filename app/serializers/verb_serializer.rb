@@ -1,4 +1,5 @@
 class VerbSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :name
+  belongs_to :tense
+  attributes :name, :translation
 end
