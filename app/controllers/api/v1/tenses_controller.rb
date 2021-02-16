@@ -1,4 +1,4 @@
-class TensesController < ApplicationController
+class Api::V1::TensesController < ApplicationController
 
     def index
 
