@@ -10,11 +10,22 @@ class VerbsController < ApplicationController
         verb = Verb.new(verb_params)
 
         if verb.save 
-            render json: VerbSerializer.new(item, include: :[tense])
+            render json: VerbSerializer.new(item, include: [:tenses])
         else 
             render json: {error: "could not save"}
         end
 
+    end
+
+    def update 
+
+        verb = Verb.find(params[:id])
+
+        if verb.update(verb_params)
+            render json: VerbSerializer.new(verb)
+        else 
+            render json: {error: "could not save"}
+        end
     end
 
     def destroy
