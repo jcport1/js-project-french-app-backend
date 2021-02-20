@@ -8,9 +8,11 @@ class VerbsController < ApplicationController
     def create
 
         verb = Verb.new(verb_params)
+        verb.tense = Tense.last 
 
         if verb.save 
-            render json: VerbSerializer.new(item, include: [:tenses])
+            render json: VerbSerializer.new(verb)
+            # render json: VerbSerializer.new(verb, include: [:tenses])
         else 
             render json: {error: "could not save"}
         end
