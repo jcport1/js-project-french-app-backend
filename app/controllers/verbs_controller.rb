@@ -8,8 +8,7 @@ class VerbsController < ApplicationController
     def create
 
         verb = Verb.new(verb_params)
-        verb.tense = Tense.last 
-
+      
         if verb.save 
             render json: VerbSerializer.new(verb)
             # render json: VerbSerializer.new(verb, include: [:tenses])
@@ -33,7 +32,7 @@ class VerbsController < ApplicationController
     def destroy
 
         verb = Verb.find(params[:id])
-        item.destroy 
+        verb.destroy 
         render json: {message: "sucessfully deleted #{verb.name} flashcard"}
 
     end
@@ -41,7 +40,7 @@ class VerbsController < ApplicationController
     private 
 
     def verb_params 
-        params.require(:verb).permit(:name, :translation, :je, :tu, :il, :nous, :vous, :tense_id)
+        params.require(:verb).permit(:name, :translation, :je, :tu, :il, :nous, :vous, :ils, :tense_id)
     end
     
 end
